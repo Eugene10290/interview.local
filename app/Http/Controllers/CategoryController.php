@@ -66,7 +66,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit', [
+            'category' => $category,
+            'categories' => Category::with('children')
+                ->where('parent_id', 0)->get(),
+            'delimeter' => ''
+        ]);
     }
 
     /**
@@ -78,7 +83,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        redirect()->route('category.index');
     }
 
     /**

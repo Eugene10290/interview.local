@@ -1,18 +1,15 @@
 @foreach($categories as $categoryItem)
     <option value = "{{ $categoryItem->id  ?? '' }}"
-        @isset($category->id)
-            @if($category->parent_id == $categoryItem->id)
+        @isset($product->id)
+            @if($product->categories->contains('id', $categoryItem))
                 selected = ""
-            @endif
-            @if($category->id == $categoryItem->id)
-                disabled = ""
             @endif
         @endisset
     >
         {{ $delimeter ?? '' }} {{ $categoryItem->title ?? '' }}
-    </option>
+
     @isset($categoryItem->children)
-        @include('category._categories', [
+        @include('product._categories', [
             'categories' => $categoryItem->children,
             'delimeter' => '-' . $delimeter
         ])
