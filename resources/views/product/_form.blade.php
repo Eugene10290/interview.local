@@ -1,3 +1,12 @@
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="form-group">
     <input type="text" class="form-control" name="title" value="{{ $product->title ?? '' }} "
            placeholder="Название товара"/>
@@ -5,6 +14,8 @@
            placeholder="Описание"/>
     <input type="file" class="form-control" name="product_image">
     <input type="number" class="form-control" name="price" value="{{ $product->price ?? '' }}">
+    <label for="photos">Фотографии</label>
+    <input type="file" class="form-control" name="photos[]" multiple />
 </div>
 
 <div class="form-group">

@@ -2,10 +2,10 @@
     <option value = "{{ $categoryItem->id  ?? '' }}"
         @isset($category->id)
             @if($category->parent_id == $categoryItem->id)
-                selected = ""
+                selected
             @endif
             @if($category->id == $categoryItem->id)
-                disabled = ""
+                disabled
             @endif
         @endisset
     >

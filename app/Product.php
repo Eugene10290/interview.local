@@ -25,4 +25,13 @@ class Product extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productImage() {
+        return $this->hasMany('App\ProductImage');
+    }
+
 }
